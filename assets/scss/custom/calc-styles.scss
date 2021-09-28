@@ -1,0 +1,64 @@
+$grey: #f5f5f5;
+$darker-grey: #f0f0f0;
+$font-white: #fff;
+$navy: navy;
+$blue: #0065cc;
+
+$font-size-heading: 22px;
+$padding-main: 24px;
+$margin-main: 16px;
+$padding-small: 8px;
+
+.c-container {
+  ul {
+    margin: 0;
+    list-style: none;
+  }
+  background-color: $grey;
+
+  .hidden {
+    display: none;
+  }
+}
+
+.selector-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.selector-tab-row {
+  display: flex;
+  padding: 0 $padding-main;
+
+  .selector-tab {
+    margin-right: $margin-main;
+    margin-bottom: 0;
+    color: $font-white;
+    text-transform: uppercase;
+    font-size: $font-size-heading;
+    background-color: $navy;
+    padding: $padding-small $padding-main;
+
+    &:last-of-type {
+      background-color: $blue;
+    }
+  }
+}
+
+.selector-content {
+  padding: $padding-main;
+  background-color: $darker-grey;
+  border: 1px solid darken($darker-grey, $amount: 10);
+}
+
+.selector-options {
+  display: flex;
+  flex-direction: row;
+}
+
+.selector-options-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: $margin-main;
+}

@@ -1,0 +1,77 @@
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<section class="page">
+    {{#unless theme_settings.hide_page_heading }}
+    <h1 class="page-heading">{{ page.title }}</h1>
+    {{/unless}}
+
+    {{#if page.sub_pages}}
+    <nav class="navBar navBar--sub">
+        <ul class="navBar-section account-navigation">
+            {{#each page.sub_pages}}
+            <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+            {{/each}}
+        </ul>
+    </nav>
+    {{/if}}
+
+    {{{region name="page_builder_content"}}}
+
+    <div class="page-content page-content--centered">
+        {{#replace '%%Syndicate%%' page.content}}
+        {{> components/page/rss_feed}}
+        {{else}}
+        <p>{{{page.content}}}</p>
+        <div class="c-container">
+            <h2>Begin Compatibility Search:</h2>
+            <div class="selector-section">
+                <div class="selector-row">
+                    <div class="selector-tab-row">
+                        <div id="chem-to-material" class="selector-tab"role="tab" aria-selected="true">Chemical to material</div>
+                    </div>
+                </div>
+                <div class="selector-row selector-content" id="material-view" role="tabpanel" aria-expanded="true">
+                    <p>Use dropdowns below to select a Chemical, and compare against all materials or any specific material.</p>
+                    <form class="selector-options">
+                        <div class="selector-options-group">
+                            <label for="chemical">Chemical:</label>
+                            <div>
+                                <select name="chemical" id="chemical-options">
+                                    <option value="mercedes">Mercedes</option>
+                                    <option value="audi">Audi</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="selector-options-group">
+                            <label for="material">Material:</label>
+                            <div>
+                                <select name="material" id="material-options">
+                                    <option value="volvo">Volvo</option>
+                                    <option value="saab">Saab</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{/replace}}
+    </div>
+
+    {{#if page.feed}}
+    <ul>
+        {{#each page.feed}}
+        <li>
+            <h6><a href="{{url}}" target="_blank">{{title}}</a></h6>
+            <p>{{content}}</p>
+        </li>
+        {{/each}}
+    </ul>
+    {{/if}}
+</section>
+
+{{/partial}}
+
+{{> layout/base}}
